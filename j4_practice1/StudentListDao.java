@@ -33,31 +33,35 @@ public class StudentListDao {
 			con = DriverManager.getConnection(JDBC_URL, USER_ID, USER_PASS);
 
 			StringBuffer buf = new StringBuffer();
-			buf.append(" seledt         ");
-			buf.append(" student_name,  ");
-			buf.append(" gender,        ");
-			buf.append(" age,           ");
-			buf.append(" career_mon,    ");
-			buf.append(" branch_name,   ");
-			buf.append(" course_name    ");
-			buf.append(" from                 ");
-			buf.append(" uzuz_student s       ");
-			buf.append(" inner join branch b  ");
-			buf.append(" on s.BRANCH_ID       ");
-			buf.append("  = b.BRANCH_ID       ");
-			buf.append(" left outer join course c ");
-			buf.append(" on s.COURSE_ID  ");
-			buf.append(" = c.COURSE_ID   ");
-			buf.append(" order by        ");
-			buf.append(" s.STUDENT_ID    ");
+			buf.append(" select	         ");
+			buf.append(" student_name,   ");
+			buf.append(" case gender when 1 then '男性'      when 2 then '女性'    end as sex,   ");
+			buf.append(" age,career_mon, ");
+			buf.append(" case when career_mon = 0      then '職歴なし' ");
+			buf.append(" when (floor(career_mon/12)=0)  then concat(career_mon%12,'ヶ月')          ");
+			buf.append(" when (career_mon%12=0)        then concat(floor(career_mon/12),'年')    ");
+			buf.append(" else concat(floor(career_mon/12),'年',career_mon%12,'ヶ月')             ");
+			buf.append(" end as career,  ");
+			buf.append(" branch_name,     ");
+			buf.append(" case  when course_name is null then '受講なし'  else course_name ");
+			buf.append(" end as course_name     ");
+			buf.append(" from   uzuz_student s   ");
+			buf.append(" inner join branch b on s.BRANCH_ID = b.BRANCH_ID left outer join ");
+			buf.append(" course c on s.COURSE_ID = c.COURSE_ID         ");
+			buf.append(" order by  s.STUDENT_ID    ");
 
 			ps = con.prepareStatement(buf.toString());
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 				StudentListDto dto = new StudentListDto();
-				dto.setId(rs.getInt("id"));
-
+				dto.setStudent_name(rs.getString("student_name"));
+				dto.setSex(rs.getString("sex"));
+				dto.setAge(rs.getInt("age"));
+				dto.setCareer(rs.getString("career"));
+				dto.setBranch_name(rs.getString("branch_name"));
+				dto.setCourse_name(rs.getString("course_name"));
+                dtoList.add(dto);
 			}
 
 		} catch (SQLException e) {

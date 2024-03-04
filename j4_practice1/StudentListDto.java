@@ -2,27 +2,27 @@ package j4_practice1;
 
 public class StudentListDto {
 
-	private String student_id;
-	private int gender;
+	private String student_name;
+	private String sex;
 	private int age;
-	private int career_mon;
+	private String career;
 	private String branch_name;
 	private String course_name;
 
-	public String getStudent_id() {
-		return student_id;
+	public String getStudent_name() {
+		return student_name;
 	}
 
-	public void setStudent_id(String student_id) {
-		this.student_id = student_id;
+	public void setStudent_name(String student_name) {
+		this.student_name = student_name;
 	}
 
-	public int getGender() {
-		return gender;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public int getAge() {
@@ -33,12 +33,12 @@ public class StudentListDto {
 		this.age = age;
 	}
 
-	public int getCareer_mon() {
-		return career_mon;
+	public String getCareer() {
+		return career;
 	}
 
-	public void setCareer_mon(int career_mon) {
-		this.career_mon = career_mon;
+	public void setCareer(String career) {
+		this.career = career;
 	}
 
 	public String getBranch_name() {
