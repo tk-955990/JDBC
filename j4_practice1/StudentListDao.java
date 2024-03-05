@@ -57,7 +57,7 @@ public class StudentListDao {
 				StudentListDto dto = new StudentListDto();
 				dto.setStudent_name(rs.getString("student_name"));
 				dto.setSex(rs.getString("sex"));
-				dto.setAge(rs.getInt("age"));
+				dto.setAge(rs.getString("age"));
 				dto.setCareer(rs.getString("career"));
 				dto.setBranch_name(rs.getString("branch_name"));
 				dto.setCourse_name(rs.getString("course_name"));

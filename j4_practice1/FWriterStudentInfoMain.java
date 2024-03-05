@@ -5,6 +5,9 @@ public class FWriterStudentInfoMain {
 
 		FWriterStudentListBL bl = new FWriterStudentListBL();
         bl.extractAll();
+        
+        FWriterStudentsByCourseBL courseBl = new FWriterStudentsByCourseBL();
+        courseBl.extractAll();
 	}
 
 }

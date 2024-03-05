@@ -9,28 +9,28 @@ public class FWriterStudentListBL {
 
 	public void extractAll() {
 		
-		final String FILE_PASS = "C:\\Udemy\\WriteFilePractice.csv";
+		final String FILE_PATH = "C:\\Udemy\\WriteFilePractice.csv";
 		final String NEW_LINE  = System.getProperty("line.separator");
 		final String COMMA = ",";
 
 		StudentListDao dao = new StudentListDao();
-		List<StudentListDto> exstractedList = dao.selectStudentInfoAll();
+		List<StudentListDto> extractedList = dao.selectStudentInfoAll();
 
-		if (exstractedList != null) {
+		if (extractedList != null) {
 
-			for (int i = 0; i < exstractedList.size(); i++) {
+			for (int i = 0; i < extractedList.size(); i++) {
 				StringBuffer rsbuf = new StringBuffer();
-				rsbuf.append(exstractedList.get(i).getStudent_name());
+				rsbuf.append(extractedList.get(i).getStudent_name());
 				rsbuf.append(COMMA);
-				rsbuf.append(exstractedList.get(i).getSex());
+				rsbuf.append(extractedList.get(i).getSex());
 				rsbuf.append(COMMA);
-				rsbuf.append(exstractedList.get(i).getAge());
+				rsbuf.append(extractedList.get(i).getAge());
 				rsbuf.append(COMMA);
-				rsbuf.append(exstractedList.get(i).getCareer());
+				rsbuf.append(extractedList.get(i).getCareer());
 				rsbuf.append(COMMA);
-				rsbuf.append(exstractedList.get(i).getBranch_name());
+				rsbuf.append(extractedList.get(i).getBranch_name());
 				rsbuf.append(COMMA);
-				rsbuf.append(exstractedList.get(i).getCourse_name());
+				rsbuf.append(extractedList.get(i).getCourse_name());
 				rsbuf.append(COMMA);
 
 				System.out.println(rsbuf.toString());
@@ -41,7 +41,7 @@ public class FWriterStudentListBL {
 		}
 		
 		try {
-			File file = new File(FILE_PASS);
+			File file = new File(FILE_PATH);
 			FileWriter fileWriter = new FileWriter(file);
 
 			fileWriter.write("#--受講生一覧--");
@@ -49,18 +49,18 @@ public class FWriterStudentListBL {
 			fileWriter.write("名前,性別,年齢,職歴,登録支店,受講講座");
 			fileWriter.write(NEW_LINE);
 
-			for(int i=0;i<exstractedList.size();i++) {
-				fileWriter.write(exstractedList.get(i).getStudent_name());
+			for(int i=0;i<extractedList.size();i++) {
+				fileWriter.write(extractedList.get(i).getStudent_name());
 				fileWriter.write(COMMA);
-				fileWriter.write(exstractedList.get(i).getSex());
+				fileWriter.write(extractedList.get(i).getSex());
 				fileWriter.write(COMMA);
-				fileWriter.write(exstractedList.get(i).getAge());
+				fileWriter.write(extractedList.get(i).getAge());
 				fileWriter.write(COMMA);
-				fileWriter.write(exstractedList.get(i).getCareer());
+				fileWriter.write(extractedList.get(i).getCareer());
 				fileWriter.write(COMMA);
-				fileWriter.write(exstractedList.get(i).getBranch_name());
+				fileWriter.write(extractedList.get(i).getBranch_name());
 				fileWriter.write(COMMA);
-				fileWriter.write(exstractedList.get(i).getCourse_name());
+				fileWriter.write(extractedList.get(i).getCourse_name());
 				fileWriter.write(COMMA);
 				fileWriter.write(NEW_LINE);
 			}

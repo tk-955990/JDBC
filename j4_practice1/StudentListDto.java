@@ -4,7 +4,7 @@ public class StudentListDto {
 
 	private String student_name;
 	private String sex;
-	private int age;
+	private String age;
 	private String career;
 	private String branch_name;
 	private String course_name;
@@ -25,12 +25,12 @@ public class StudentListDto {
 		this.sex = sex;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setAge(String string) {
+		this.age = string;
 	}
 
 	public String getCareer() {
